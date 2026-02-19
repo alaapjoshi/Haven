@@ -1,12 +1,16 @@
 # Haven
 
-Arduino home security sensor
+Haven is a home security system that uses an Arduino to detect movement and send you a message on your phone using firebase
 
+MOBILE APP: 
+React Native
+Firestore / Firebase
 
-Parts list:
+ARDUINO:
+Python 
+Serial communication
+
 - Arduino UNO
 - HC-SR04
 - 1602 LCD sensor
-- Buzzer
-- 
 
