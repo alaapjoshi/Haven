@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# Secrets: never commit Firebase service-account keys or env files
+firebase.json
+*-firebase-adminsdk-*.json
+service-account*.json
+.env
+.env*.local
+
+# Node / Expo
+node_modules/
+.expo/
+dist/
+web-build/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# YOLOv5 (cloned locally, not vendored) and its outputs
+detection/yolov5/
+runs/
+*.pt
+detected_image*.jpg
+
+# IDE
+.vscode/
+.idea/

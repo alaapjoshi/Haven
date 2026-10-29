@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="brand.css">
+<style>
+  .window { margin-top: 44px; }
+  pre { font-size: 20px; }
+  .cap { font-size: 20px; margin-top: 22px; line-height: 1.5; }
+</style></head>
+<body><div class="canvas gallery">
+  <h1 class="title">Camera detections to the cloud</h1>
+  <p class="sub muted">A modified YOLOv5 detect.py uploads frames with detections to Firebase Storage for the app's Camera Feed.</p>
+  <div class="window"><div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="window-name">detection/detect.py</span></div>
+<pre><span class="k">def</span> <span class="f">take_photo_and_upload</span>(image_name, image):
+    <span class="c"># Save the image locally</span>
+    cv2.<span class="f">imwrite</span>(image_name, image)
+
+    <span class="c"># Upload image to Firebase Storage</span>
+    bucket = storage.<span class="f">bucket</span>()
+    blob = bucket.<span class="f">blob</span>(image_name)
+<span class="hl">    blob.<span class="f">upload_from_filename</span>(image_name)</span>
+<span class="c">...</span>
+        <span class="c"># If detections are found, take a photo and upload it to Firebase Storage</span>
+        list1 = [<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>,<span class="n">7</span>,<span class="n">8</span>,<span class="n">9</span>,<span class="n">10</span>]
+<span class="hl">        <span class="k">if</span> <span class="f">len</span>(det):</span>
+            <span class="k">if</span> (random.<span class="f">choice</span>(list1) &gt;=<span class="n">5</span>):
+                <span class="f">take_photo_and_upload</span>(<span class="s">"detected_image"</span>+ <span class="f">str</span>(random.<span class="f">random</span>()) + <span class="s">".jpg"</span>, im0)</pre></div>
+  <p class="cap muted">Runs inside YOLOv5's inference loop, so any camera source YOLOv5 supports (webcam, video, stream) can trigger uploads.</p>
+</div></body></html>

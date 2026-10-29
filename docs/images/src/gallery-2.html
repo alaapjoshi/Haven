@@ -1,0 +1,39 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="brand.css">
+<style>
+  .stage { position: relative; flex: 1; margin-top: 72px; }
+  .node { position: absolute; width: 230px; height: 120px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+          box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: center; padding: 0 24px; }
+  .node b { font-size: 23px; font-weight: 700; }
+  .node span { font-size: 17px; color: var(--muted); margin-top: 6px; }
+  .node.store { border-color: rgba(56,189,248,.6); }
+  .node.app { width: 270px; height: 170px; border: 2px solid var(--accent); }
+  .lane { position: absolute; left: 0; font-size: 15px; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
+  svg { position: absolute; inset: 0; overflow: visible; }
+  .lbl { position: absolute; font-size: 16px; color: var(--accent); font-weight: 600; text-align: center; width: 160px; }
+</style></head>
+<body><div class="canvas gallery">
+  <h1 class="title">How Haven fits together</h1>
+  <p class="sub muted">Three runtimes, C++ on the Arduino, Python on a laptop, JavaScript on the phone, joined by serial and Firebase.</p>
+  <div class="stage">
+    <div class="lane" style="top:40px">SENSOR PATH</div>
+    <div class="lane" style="top:330px">CAMERA PATH</div>
+    <!-- row 1: y 80..200, row 2: y 370..490 -->
+    <div class="node" style="left:0;top:80px"><b>HC-SR04</b><span>ultrasonic distance</span></div>
+    <div class="node" style="left:310px;top:80px"><b>Arduino UNO</b><span>LCD + buzzer</span></div>
+    <div class="node" style="left:620px;top:80px"><b>Python bridge</b><span>reads "Hi" over serial</span></div>
+    <div class="node store" style="left:930px;top:80px"><b>Firestore</b><span>alarm timestamps</span></div>
+    <div class="node" style="left:0;top:370px"><b>Webcam</b><span>live video</span></div>
+    <div class="node" style="left:310px;top:370px;width:540px"><b>YOLOv5 detect.py</b><span>object detection, uploads a sample of frames with detections</span></div>
+    <div class="node store" style="left:930px;top:370px"><b>Firebase Storage</b><span>captured frames</span></div>
+    <div class="node app" style="left:1202px;top:200px"><b>Haven app</b><span>React Native (Expo)<br>alarm list + camera feed</span></div>
+    <svg width="1472" height="700">
+      <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#38BDF8"/></marker></defs>
+      <g stroke="#38BDF8" stroke-width="2.5" fill="none" marker-end="url(#a)">
+        <path d="M232,140 H306"/><path d="M542,140 H616"/><path d="M852,140 H926"/>
+        <path d="M232,430 H306"/><path d="M852,430 H926"/>
+        <path d="M1162,140 H1182 V250 H1198"/><path d="M1162,430 H1182 V320 H1198"/>
+      </g>
+    </svg>
+  </div>
+</div></body></html>

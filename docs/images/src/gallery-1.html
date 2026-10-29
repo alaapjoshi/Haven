@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="brand.css">
+<style>
+  .row { display: flex; gap: 72px; margin-top: 40px; align-items: flex-start; }
+  .phone { width: 330px; flex: none; }
+  .cards { display: flex; flex-direction: column; gap: 24px; flex: 1; padding-top: 40px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 32px; box-shadow: var(--shadow); }
+  .card h2 { font-size: 28px; font-weight: 700; display: flex; align-items: center; gap: 14px; }
+  .card p { font-size: 21px; line-height: 1.5; margin-top: 10px; }
+  .tag { font-size: 15px; color: var(--accent); border: 1px solid rgba(56,189,248,.45); border-radius: 999px; padding: 4px 12px; font-weight: 600; }
+  .note { font-size: 15px; margin-top: 4px; }
+</style></head>
+<body><div class="canvas gallery">
+  <h1 class="title">The Haven app</h1>
+  <p class="sub muted">React Native (Expo) app with a Home tab for your own system and a Community tab for neighbors.</p>
+  <div class="row">
+    <div class="phone"><img src="assets/app-home.png" alt=""></div>
+    <div class="cards">
+      <div class="card"><h2>Recent Alarms <span class="tag">Firestore</span></h2>
+        <p class="muted">Lists the timestamp of every alarm the Arduino sensor raised, written by the Python serial bridge.</p></div>
+      <div class="card"><h2>Camera Feed <span class="tag">Firebase Storage</span></h2>
+        <p class="muted">Shows the frames YOLOv5 captured when it detected something on the camera.</p></div>
+      <div class="card"><h2>Community <span class="tag">react-native-maps</span></h2>
+        <p class="muted">A neighborhood map with markers for nearby Haven users (sample locations).</p></div>
+      <p class="note muted">Screenshot from the app's web build. The embedded video is blurred.</p>
+    </div>
+  </div>
+</div></body></html>

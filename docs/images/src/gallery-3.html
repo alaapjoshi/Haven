@@ -1,0 +1,45 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="brand.css">
+<style>
+  .row { display: flex; gap: 40px; margin-top: 44px; align-items: flex-start; }
+  .window { flex: 1; }
+  pre { font-size: 19px; }
+  .cap { font-size: 19px; margin-top: 18px; line-height: 1.5; }
+</style></head>
+<body><div class="canvas gallery">
+  <h1 class="title">From sensor to alarm log</h1>
+  <p class="sub muted">The Arduino decides when to alarm; a Python bridge turns each alarm into a Firestore record.</p>
+  <div class="row">
+    <div>
+      <div class="window"><div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="window-name">arduino/haven_sensor/haven_sensor.ino</span></div>
+<pre>  distance = duration * <span class="n">0.034</span> / <span class="n">2</span>;
+
+  lcd.<span class="f">setCursor</span>(<span class="n">0</span>, <span class="n">1</span>);
+  lcd.<span class="f">print</span>(distance);
+  lcd.<span class="f">print</span>(<span class="s">" cm"</span>);
+
+<span class="hl">  <span class="k">if</span> (distance &gt;= <span class="n">55</span> || distance &lt;= <span class="n">40</span>) {</span>
+    <span class="f">tone</span>(buzzerPin, <span class="n">1000</span>);
+<span class="hl">    Serial.<span class="f">println</span>(<span class="s">"Hi"</span>);</span>
+    <span class="f">delay</span>(<span class="n">100</span>);
+  } <span class="k">else</span> {
+    <span class="f">noTone</span>(buzzerPin);
+  }</pre></div>
+      <p class="cap muted">Outside the 40 to 55 cm window, it beeps and sends <span style="color:var(--accent)">"Hi"</span>.</p>
+    </div>
+    <div>
+      <div class="window"><div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="window-name">bridge/serial_to_firestore.py</span></div>
+<pre><span class="k">try</span>:
+    <span class="k">while</span> <span class="k">True</span>:
+        <span class="k">if</span> ser.in_waiting &gt; <span class="n">0</span>:
+            line = ser.<span class="f">readline</span>().<span class="f">decode</span>(<span class="s">'utf-8'</span>).<span class="f">strip</span>()
+<span class="hl">            <span class="k">if</span> line == <span class="s">"Hi"</span>:</span>
+<span class="hl">                <span class="f">send_current_datetime_to_firestore</span>()</span>
+<span class="k">except</span> KeyboardInterrupt:
+    <span class="f">print</span>(<span class="s">"Serial connection interrupted"</span>)
+<span class="k">finally</span>:
+    ser.<span class="f">close</span>()</pre></div>
+      <p class="cap muted">Each "Hi" becomes a timestamped document the app lists under Recent Alarms.</p>
+    </div>
+  </div>
+</div></body></html>

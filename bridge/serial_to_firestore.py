@@ -1,10 +1,11 @@
+import os
 import firebase_admin
 from firebase_admin import credentials, firestore
 import serial
 from datetime import datetime
 
-# Initialize Firestore
-cred = credentials.Certificate("/Users/alaapjoshi/Downloads/new/firebase.json")
+# Initialize Firestore (path to a service-account key, kept outside the repo)
+cred = credentials.Certificate(os.environ["FIREBASE_CREDENTIALS"])
 app = firebase_admin.initialize_app(cred)
 store = firestore.client()
 
