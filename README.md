@@ -9,7 +9,7 @@
 ## About
 Off-the-shelf security cameras are expensive and tied to one vendor's cloud. Haven builds the same core loop from cheap parts: an ultrasonic sensor on an Arduino trips an alarm, a laptop webcam running YOLOv5 captures frames with detected objects, and both feed a Firebase backend that a phone app reads. The interesting part is the glue: three runtimes (C++ on the microcontroller, Python on the host, JavaScript on the phone) talking through a serial link and Firebase.
 
-TODO(Alaap): name of the hackathon, date, and any result or award.
+**1st Place Overall at MontyHacks VII.**
 
 ## Features
 - Detects movement with an HC-SR04 ultrasonic sensor, shows the live distance on a 16x2 LCD, and sounds a buzzer.
@@ -129,8 +129,6 @@ flowchart LR
 ## Author
 **Alaap Joshi** - Computer Science + Cognitive Science, Rutgers University-New Brunswick
 [GitHub](https://github.com/alaapjoshi) | [LinkedIn](https://linkedin.com/in/alaapjoshi)
-
-Contributors: TODO(Alaap): teammate name(s) and GitHub links (the mobile app was first committed by [TheAryanAnode](https://github.com/TheAryanAnode)), and which parts you built.
 
 ## License
 MIT. See [LICENSE](LICENSE). `detection/detect.py` is a modified copy of Ultralytics YOLOv5 and stays under AGPL-3.0.
